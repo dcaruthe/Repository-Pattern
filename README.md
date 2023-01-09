@@ -4,7 +4,7 @@ This is a simple example of the Repository Design Pattern written in C# for topi
 The project writes blocks of text to the data layer given a file_name and text input
 1. Clone project
 ```bash
-git clone <put-git-link-here>
+git clone https://github.com/dcaruthe/Repository-Pattern.git
 ```
 2. change to project directory
 ```bash
