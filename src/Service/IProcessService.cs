@@ -4,6 +4,6 @@ namespace Service;
 
 public interface IProcessService
 {
-    FileModel GetFileModelFromUser();
-    bool WriteModel(FileModel model);
+    FileModel? GetFileModelFromUser();
+    (bool, string) WriteModel(FileModel model);
 }

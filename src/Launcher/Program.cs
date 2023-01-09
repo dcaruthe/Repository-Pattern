@@ -3,17 +3,25 @@ using Service;
 using DataAccess;
 
 IRepository repo = new FileRepository();
-IProcessService service = new ProcessService(repo);
+IProcessService service = new ProcessService(Console.In, repo);
 
-FileModel model = service.GetFileModelFromUser();
-bool check = service.WriteModel(model);
-if (check)
+FileModel? model = service.GetFileModelFromUser();
+if (model == null)
 {
-    Console.WriteLine("File was written successfully");
-    Environment.Exit(0);
+    Console.WriteLine("Unable create Model, No filename provided");
+    Environment.Exit(1);
 }
 else
 {
-    Console.WriteLine("Failed to write file");
-    Environment.Exit(1);
+    (bool, string) ret = service.WriteModel(model);
+    if (ret.Item1)
+    {
+        Console.WriteLine("File written Successfully!");
+        Environment.Exit(0);
+    }
+    else
+    {
+        Console.WriteLine($"Failed to write: {ret.Item2}");
+        Environment.Exit(2);
+    }
 }
