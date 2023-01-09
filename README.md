@@ -10,9 +10,13 @@ git clone <put-git-link-here>
 ```bash
 cd Repository-Pattern
 ```
-3. Run program
+3. Build program
 ```bash
-dotnet run --project src/Launcher
+dotnet publish src -o build 
+```
+4. Run program
+```bash
+dotnet build/Launcher.dll
 ```
 ### Inside the program
 #### 1. When the program starts the first thing you will see is
